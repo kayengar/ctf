@@ -2,12 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8566b219-6ae4-46c3-b851-921cb48d0756" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xss/__init__.py" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/xss/find_elements.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/ctf.iml" afterPath="$PROJECT_DIR$/.idea/ctf.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/install.sh" afterPath="$PROJECT_DIR$/install.sh" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/xss/find_elements.py" afterPath="$PROJECT_DIR$/xss/find_elements.py" />
     </list>
     <ignored path="ctf.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,8 +109,8 @@
       <file leaf-file-name="find_elements.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/xss/find_elements.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="198">
-              <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+            <state relative-caret-position="126">
+              <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
               <folding />
             </state>
           </provider>
@@ -458,6 +454,14 @@
       <option name="presentableId" value="Default" />
       <updated>1493070399334</updated>
     </task>
+    <task id="LOCAL-00001" summary="Setting up initial xss module">
+      <created>1493082905992</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1493082905992</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -493,6 +497,10 @@
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Setting up initial xss module" />
+    <option name="LAST_COMMIT_MESSAGE" value="Setting up initial xss module" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -781,8 +789,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/xss/find_elements.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="11" column="30" selection-start-line="11" selection-start-column="30" selection-end-line="11" selection-end-column="30" />
+        <state relative-caret-position="126">
+          <caret line="8" column="65" selection-start-line="8" selection-start-column="65" selection-end-line="8" selection-end-column="65" />
           <folding />
         </state>
       </provider>
