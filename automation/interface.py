@@ -108,7 +108,7 @@ def status():
 		status = session.get_support_tickets()
 		print status
 	except BaseException as e:
-		print "Issue while raising the ticket."
+		print "Issue while finding ticket status"
 		print e
 
 login()

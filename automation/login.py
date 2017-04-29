@@ -10,6 +10,7 @@ with open('ctf_key', 'wb') as f:
 
 with open('root_key', 'wb') as f:
     f.write(key_info['root_key'])
+print key_info['port'], key_info['ip']
 
 # cmd = "ssh -i ctf_key -p " + str(key_info['port']) + " ctf@" + key_info['ip']
 ret = subprocess.Popen(["ssh", "-i", "ctf_key", "-p", str(key_info['port']), "ctf@", key_info['ip']], stderr = subprocess.PIPE)

