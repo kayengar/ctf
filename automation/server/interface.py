@@ -1,5 +1,6 @@
 from ictf import iCTF
-
+import os
+from exploit import *
 service = None
 session = None
 flags = {}
@@ -80,12 +81,14 @@ def attack(service_id):
                                 for ele in flag:
                                         if ele[-2:] == "\n":
                                                 ele = ele[:-2]
-                                        print ele
-
+#                                        print ele
+					if ele not in flag:
+						flags[ele] = 1
+						temp_flags.append(ele)
 			except:
 				print "Check the exploit. Team", each['hostname'],"service seems to outsmart it. - Index",count
 			count += 1
-		# submit()
+		submit()
 	except:
 		print "Check the service code sent to be attacked."
 
