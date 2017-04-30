@@ -1,0 +1,5 @@
+#!/bin/bash
+cp setup/ctf_key .
+chmod 400 ctf_key
+ssh -i ctf_key -p 1360 ctf@52.89.52.99
+#chmod +x login
