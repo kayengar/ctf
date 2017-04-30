@@ -1,5 +1,5 @@
 #!/bin/bash
 cp setup/root_key .
 chmod 400 root_key
-ssh -i root_key -p 1340 root@52.89.52.99
+ssh -X -i root_key -p 1340 root@52.89.52.99
 #chmod +x login

@@ -67,13 +67,14 @@ def attack(service_id):
         count = 0
         for each in target_list:
             try:
-                print "port - ", each["port"]
                 port = str(each["port"])
-                os.system(exploit().format(port))
-                
+                host = str(each["hostname"])
+                cmd = exploit().format(host, port)
+                print cmd
+                os.system(cmd) 
                 with open("resp.txt", "r") as response:
                     temp = response.readlines()
-
+                print temp
                 for each in temp:
                     line = each.split(' ')
                     flag = [s for s in line if "FLG" in s]
