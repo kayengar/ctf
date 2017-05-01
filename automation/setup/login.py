@@ -2,7 +2,7 @@ import subprocess
 import sys
 from ictf import iCTF
 
-info = iCTF('http://35.167.152.77/')
+info = iCTF('http://35.160.215.67/')
 session = info.login('praveen0989@gmail.com','U9gHVyWAdWda')
 key_info = session.get_ssh_keys()
 
