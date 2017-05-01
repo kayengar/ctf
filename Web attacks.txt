@@ -1,0 +1,31 @@
+Web vulnerabilities list :
+
+1. Hidden forms
+
+Attack : Use curl to inject values for the hidden fields if available
+
+Defense: 
+
+2. OS command line injection
+
+Attack : Execute the system command for cat and all password files.
+
+Defense : escapeshellcmd($str)
+
+3. File inclusion attacks
+
+Attack :
+
+Defense : 
+
+
+4. SQL injection 
+
+Attack : Different combinations of password
+
+Defense : Sanitise inputs. How??
+
+5. XSS scripting attacks
+
+
+ 
