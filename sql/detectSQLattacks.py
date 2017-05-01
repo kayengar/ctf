@@ -15,7 +15,7 @@ def detectSQLattack():
     fieldName2 = raw_input()
     # Check different cases
     print 'Checking for classic case'
-    fieldValue1 = "\\' or '1=1'; -- "
+    fieldValue1 = "\' or '1=1'; -- "
     fieldValue2 = ''
     jsonData[fieldName1] = fieldValue1
     jsonData[fieldName2] = fieldValue2
