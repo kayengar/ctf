@@ -105,7 +105,8 @@ def webattack(service_id, filename, parameters):
             try:
                 port = str(each["port"])
                 host = str(each["hostname"])
-                cmd = webexploit().format(host, port, filename, host, port, host, port, parameters)
+                flag_id = str(each["flag_id"])
+                cmd = webexploit().format(host, port, filename, host, port, host, port, flag_id)
                 # print cmd
                 os.system(cmd)
                 print "Reply content - " 
@@ -138,7 +139,7 @@ def submit():
     try:
         global temp_flags
         if temp_flags != []:
-            session.submit_flag(temp_flags)
+            print session.submit_flag(temp_flags)
             print "New flags were submitted successfully."
         else:
             print "No new flags were collected to submit. :("       
