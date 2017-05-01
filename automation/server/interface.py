@@ -77,7 +77,7 @@ def attack(service_id):
                     temp = response.readlines()
                 print temp
                 for each in temp:
-                    line = each.split(' ')
+                    line = re.split(' |,', each)
                     flag = [s for s in line if "FLG" in s]
                     for ele in flag:
                         if ele[-2:] == "\n":
@@ -114,14 +114,13 @@ def webattack(service_id, filename, parameters):
                 # print temp
                 for each in temp:
                     line = re.split(' |,', each)
-                    print line
-                    # flag = [s for s in line if "FLG" in s]
-                    # for ele in flag:
-                    #     if ele[-2:] == "\n":
-                    #         ele = ele[:-2]
-                    #     if ele not in flag:
-                    #         flags[ele] = 1
-                    #         temp_flags.append(ele)
+                    flag = [s for s in line if "FLG" in s]
+                    for ele in flag:
+                        if ele[-2:] == "\n":
+                            ele = ele[:-2]
+                        if ele not in flag:
+                            flags[ele] = 1
+                            temp_flags.append(ele)
             except:
                 print "Check the exploit. Team", each['hostname'],"service seems to outsmart it. - Index",count
         # submit()
