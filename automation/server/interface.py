@@ -70,7 +70,12 @@ def attack(service_id, inputargs):
                 port = str(each["port"])
                 host = str(each["hostname"])
                 flag_id = str(each["flag_id"])
-                cmd = exploit().format(inputargs, flag_id, host, port)
+                with open("python_file/file.txt","w") as file:
+                    file.write(inputargs)
+                    file.write("\n"+flag_id)
+                    # Write additional parameters
+                file.close()
+                cmd = exploit().format(host, port)
                 print cmd
                 os.system(cmd) 
                 with open("python_file/resp.txt", "r") as response:
@@ -91,6 +96,49 @@ def attack(service_id, inputargs):
         submit()
     except:
         print "Check the service code sent to be attacked."
+
+def cattack(service_id, inputargs):
+    global session
+    global flags
+    global temp_flags
+    global target_list
+    temp_flags = []
+    try:
+        target_service = session.get_targets(service_id)
+        target_list = target_service['targets']
+        for each in target_list:
+            try:
+                port = str(each["port"])
+                host = str(each["hostname"])
+                flag_id = str(each["flag_id"])
+                # flag_id = 
+                with open("binary_file/file.txt","w") as file:
+                    file.write(inputargs)
+                    file.write("\n"+flag_id)
+                    # Write additional parameters
+                file.close()
+                cmd = exploit().format(host, port)
+                print cmd
+                os.system(cmd) 
+                with open("binary_file/resp.txt", "r") as response:
+                    temp = response.readlines()
+                print "Reply content -"
+                print temp
+                for each in temp:
+                    line = re.split(' |,', each)
+                    flag = [s for s in line if "FLG" in s]
+                    for ele in flag:
+                        if ele[-2:] == "\n":
+                            ele = ele[:-2]
+                        if ele not in flags:
+                            flags[ele] = 1
+                            temp_flags.append(ele)
+            except:
+                print "Check the exploit. Team", each['hostname'],"service seems to outsmart it. - Index",count
+        submit()
+    except:
+        print "Check the service code sent to be attacked."
+
 
 def webattack(service_id, filename, parameters):
     global session
@@ -163,7 +211,7 @@ def status():
         print "Issue while raising the ticket."
         print e
 
-login()
+# login()
 
 '''
     t.submit_flag(["FLGxxxxxxx","FLGyyyyyyyyy", "FLGzzzzzzzzz"])
