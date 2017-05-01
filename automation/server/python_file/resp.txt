@@ -1,4 +1,3 @@
 Hi! Welcome to our note storage service
 Want to (R)ead or (W)rite a note?
-Which note?
-Note content: FLGwDRnQgWelQlsk
+What was that? I don't know what that means!
