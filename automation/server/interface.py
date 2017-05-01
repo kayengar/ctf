@@ -82,7 +82,7 @@ def attack(service_id):
                     for ele in flag:
                         if ele[-2:] == "\n":
                             ele = ele[:-2]
-                        if ele not in flag:
+                        if ele not in flags:
                             flags[ele] = 1
                             temp_flags.append(ele)
             except:
@@ -107,19 +107,22 @@ def webattack(service_id, filename, parameters):
                 host = str(each["hostname"])
                 flag_id = str(each["flag_id"])
                 cmd = webexploit().format(host, port, filename, host, port, host, port, flag_id)
-                # print cmd
+                print cmd
                 os.system(cmd)
                 print "Reply content - " 
                 with open("web_file/webresp.txt", "r") as response:
                     temp = response.readlines()
-                # print temp
+                print temp
                 for each in temp:
                     line = re.split(' |,', each)
                     flag = [s for s in line if "FLG" in s]
+#                    print line
+#                    print flag
                     for ele in flag:
                         if ele[-2:] == "\n":
                             ele = ele[:-2]
-                        if ele not in flag:
+                        print ele
+                        if ele not in flags:
                             flags[ele] = 1
                             temp_flags.append(ele)
             except:
