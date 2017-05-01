@@ -107,7 +107,8 @@ def webattack(service_id, filename, parameters):
                 host = str(each["hostname"])
                 cmd = webexploit().format(host, port, filename, host, port, host, port, parameters)
                 # print cmd
-                os.system(cmd) 
+                os.system(cmd)
+                print "Reply content - " 
                 with open("web_file/webresp.txt", "r") as response:
                     temp = response.readlines()
                 # print temp
