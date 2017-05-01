@@ -25,6 +25,28 @@ Attack : Different combinations of password
 
 Defense : Sanitise inputs. How??
 
+Solution 1 : prepared statements
+
+        $stmt = $pdo->prepare('SELECT * FROM employees WHERE name = :name');
+
+        $stmt->execute(array('name' => $name));
+
+        foreach ($stmt as $row) {
+            // do something with $row
+        }
+
+Solution 2 : mysqli
+
+    $stmt = $dbConnection->prepare('SELECT * FROM employees WHERE name = ?');
+    $stmt->bind_param('s', $name);
+
+    $stmt->execute();
+
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        // do something with $row
+    }
+
 5. XSS scripting attacks
 
 
