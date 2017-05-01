@@ -65,12 +65,12 @@ def attack(service_id, inputargs):
     try:
         target_service = session.get_targets(service_id)
         target_list = target_service['targets']
-        count = 0
         for each in target_list:
             try:
                 port = str(each["port"])
                 host = str(each["hostname"])
                 flag_id = str(each["flag_id"])
+                print exploit()
                 cmd = exploit().format(inputargs, flag_id, host, port)
                 print cmd
                 os.system(cmd) 
@@ -88,7 +88,6 @@ def attack(service_id, inputargs):
                             temp_flags.append(ele)
             except:
                 print "Check the exploit. Team", each['hostname'],"service seems to outsmart it. - Index",count
-            count += 1
         submit()
     except:
         print "Check the service code sent to be attacked."
