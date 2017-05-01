@@ -70,12 +70,12 @@ def attack(service_id, inputargs):
                 port = str(each["port"])
                 host = str(each["hostname"])
                 flag_id = str(each["flag_id"])
-                print exploit()
                 cmd = exploit().format(inputargs, flag_id, host, port)
                 print cmd
                 os.system(cmd) 
                 with open("python_file/resp.txt", "r") as response:
                     temp = response.readlines()
+                print "Reply content -"
                 print temp
                 for each in temp:
                     line = re.split(' |,', each)
@@ -116,8 +116,6 @@ def webattack(service_id, filename, parameters):
                 for each in temp:
                     line = re.split(' |,', each)
                     flag = [s for s in line if "FLG" in s]
-#                    print line
-#                    print flag
                     for ele in flag:
                         if ele[-2:] == "\n":
                             ele = ele[:-2]
