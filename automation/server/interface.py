@@ -91,6 +91,43 @@ def attack(service_id):
     except:
         print "Check the service code sent to be attacked."
 
+def webattack(service_id):
+    global session
+    global flags
+    global temp_flags
+    global target_list
+    temp_flags = []
+    try:
+        target_service = session.get_targets(service_id)
+        target_list = target_service['targets']
+        count = 0
+        for each in target_list:
+            try:
+                port = str(each["port"])
+                host = str(each["hostname"])
+                cmd = webexploit().format(host, port)
+                print cmd
+                os.system(cmd) 
+                with open("resp.txt", "r") as response:
+                    temp = response.readlines()
+                print temp
+                for each in temp:
+                    line = each.split(' ')
+                    flag = [s for s in line if "FLG" in s]
+                    for ele in flag:
+                        if ele[-2:] == "\n":
+                            ele = ele[:-2]
+                        if ele not in flag:
+                            flags[ele] = 1
+                            temp_flags.append(ele)
+            except:
+                print "Check the exploit. Team", each['hostname'],"service seems to outsmart it. - Index",count
+            count += 1
+        submit()
+    except:
+        print "Check the service code sent to be attacked."
+
+
 def teaminfo(index):
     global target_list
     team = target_list[index]   
