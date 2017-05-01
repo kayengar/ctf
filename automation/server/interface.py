@@ -56,7 +56,7 @@ def services():
         } ] 
 }   '''
 
-def attack(service_id):
+def attack(service_id, inputargs):
     global session
     global flags
     global temp_flags
@@ -70,7 +70,8 @@ def attack(service_id):
             try:
                 port = str(each["port"])
                 host = str(each["hostname"])
-                cmd = exploit().format(host, port)
+                flag_id = str(each["flag_id"])
+                cmd = exploit().format(inputargs, flag_id, host, port)
                 print cmd
                 os.system(cmd) 
                 with open("python_file/resp.txt", "r") as response:
@@ -127,7 +128,7 @@ def webattack(service_id, filename, parameters):
                             temp_flags.append(ele)
             except:
                 print "Check the exploit. Team", each['hostname'],"service seems to outsmart it. - Index",count
-        # submit()
+        submit()
     except:
         print "Check the service code sent to be attacked."
 
@@ -143,7 +144,7 @@ def submit():
         global temp_flags
         if temp_flags != []:
             print session.submit_flag(temp_flags)
-            print "New flags were submitted successfully."
+            print len(temp_flags), "new flags were submitted successfully."
         else:
             print "No new flags were collected to submit. :("       
     except:
